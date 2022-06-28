@@ -1,0 +1,8 @@
+.PostContainer {
+    position: relative;
+    margin-top: 160px;
+    color: #cd8fda;
+    font-size: 15px;
+    overflow-y: scroll;
+    height: 550px;
+}

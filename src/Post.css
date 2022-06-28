@@ -1,0 +1,18 @@
+.Post {
+    width: 600px;
+    background-color: #F5E1FD;
+    margin: 5px;
+    padding: 10px 20px 20px 20px;
+    border: 2px dashed #B399D4;
+    border-radius: 5px;
+}
+
+.Post .PostData {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Post .PostContent {
+    padding: 15px 25px;
+    font-size: 18px;
+}
