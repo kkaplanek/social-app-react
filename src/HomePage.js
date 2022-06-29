@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import Post from "./Post";
+import PostFeed from "./PostFeed";
 import axios from 'axios';
 
 import './HomePage.css'
@@ -18,6 +18,7 @@ class HomePage extends Component {
     componentDidMount() {
         this.getPostData();
     }
+    
 
     getPostData = () => {
         axios.post('https://akademia108.pl/api/social-app/post/latest')
@@ -26,16 +27,45 @@ class HomePage extends Component {
                 postList: response.data
             })
   
-            console.log(response.data);
+            // console.log(response.data);
 
         })
+        .catch((error) => {
+            console.error(error);
+        });
          
     }
+
+    getNextPosts = () => {
+
+    let posts = this.state.postList;
+
+        axios
+          .post(
+            "https://akademia108.pl/api/social-app/post/older-then",
+            {
+              date: posts[posts.length - 1].created_at
+            }
+          )
+          .then((response) => {
+            let responseData = response.data;
+            posts = posts.concat(responseData);
+            this.setState({
+                postList: posts
+            })
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+
+      };
+    
+    
 
     render() {
         return(
             <div className="PostContainer">
-                <Post postData={this.state.postList}/>
+                <PostFeed postData={this.state.postList} newPosts={this.getNextPosts}/>
             </div>
         )
     }

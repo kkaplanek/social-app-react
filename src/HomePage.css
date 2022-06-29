@@ -5,4 +5,15 @@
     font-size: 15px;
     overflow-y: scroll;
     height: 550px;
+    text-align: center;
+}
+
+.LoadMore {
+    width: 100px;
+    height: 50px;
+    font-size: 15px;
+    background-color: #CE9DD9;
+    color: #F5E1FD;
+    border: 1px solid #CE9DD9;
+    border-radius: 10px;
 }
