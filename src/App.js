@@ -1,20 +1,28 @@
-import * as React from "react";
+import React, {useState} from "react";
 import { Routes, Route, Outlet, Link } from "react-router-dom";
+import axios from "axios";
 
 import './App.css';
 
 import HomePage from './HomePage.js';
+import LoginPage from "./LoginPage";
+import SignupPage from "./SignupPage";
 
 function App() {
+
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
+
+  axios.defaults.headers.common['Authorization'] = "Bearer " + (user ? user.jwt_token : "");
+
   return (
     <div>
       <header className="App-header">
         <h1>Social App</h1>
         <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="login" element={<Login />} />
-            <Route path="signup" element={<SignUp />} />
+          <Route path="/" element={<Layout user={user}/>}>
+            <Route index element={<HomePage />} />
+            <Route path="login" element={<LoginPage setUser={setUser} user={user}/>} />
+            <Route path="signup" element={<SignupPage />} />
           </Route>
         </Routes>
       </header>
@@ -22,7 +30,7 @@ function App() {
   );
 }
 
-function Layout() {
+function Layout(props) {
   return (
     <div>
       {/* A "layout route" is a good place to put markup you want to
@@ -32,40 +40,19 @@ function Layout() {
           <li>
             <Link to="/" className="App-link">Home</Link>
           </li>
-          <li>
+          {!props.user && <li>
             <Link to="/login" className="App-link">Login</Link>
-          </li>
-          <li>
+          </li>}
+          {!props.user && <li>
             <Link to="/signup" className="App-link">SignUp</Link>
-          </li>
+          </li>}
+          {props.user && <li>
+            <Link to="/" className="App-link">Log Out</Link>
+          </li>}
         </ul>
       </nav>
 
       <Outlet />
-    </div>
-  );
-}
-
-function Home() {
-  return (
-    <div>
-      <HomePage />
-    </div>
-  );
-}
-
-function Login() {
-  return (
-    <div>
-      <h2>Log In</h2>
-    </div>
-  );
-}
-
-function SignUp() {
-  return (
-    <div>
-      <h2>Sign Up</h2>
     </div>
   );
 }

@@ -40,9 +40,7 @@ class HomePage extends Component {
 
     let posts = this.state.postList;
 
-        axios
-          .post(
-            "https://akademia108.pl/api/social-app/post/older-then",
+        axios.post('https://akademia108.pl/api/social-app/post/older-then',
             {
               date: posts[posts.length - 1].created_at
             }

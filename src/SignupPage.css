@@ -1,0 +1,31 @@
+.SignupFormContainer {
+    margin-top: 180px;
+    padding: 40px;
+    background-color: #F5E1FD;
+    width: 540px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    border: 2px dashed #B399D4;
+    border-radius: 5px;
+}
+
+.SignupFormContainer form.SignupForm input {
+    width: 300px;
+    height: 30px;
+    outline: none;
+    background-color: #f9f0fc;
+    border: 2px solid #B399D4;
+    border-radius: 5px;
+}
+
+.SignupFormContainer form.SignupForm button.SignupButton {
+    width: 70px;
+    height: 35px;
+    font-size: 15px;
+    background-color: #CE9DD9;
+    color: #F5E1FD;
+    border: 1px solid #CE9DD9;
+    border-radius: 10px;
+    margin-top: 20px;
+}
