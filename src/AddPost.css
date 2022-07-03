@@ -1,0 +1,32 @@
+.AddPost {
+    background-color: #F5E1FD;
+    width: 620px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed #B399D4;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+.AddPost textarea {
+    width: 500px;
+    height: 80px;
+    outline: none;
+    background-color: #f9f0fc;
+    border: 2px solid #B399D4;
+    border-radius: 5px;
+}
+
+.AddPost button {
+    width: 70px;
+    height: 35px;
+    font-size: 15px;
+    background-color: #CE9DD9;
+    color: #F5E1FD;
+    border: 1px solid #CE9DD9;
+    margin-top: 3px;
+    border-radius: 10px;
+}

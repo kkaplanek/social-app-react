@@ -23,7 +23,7 @@ class LoginPage extends Component {
             {
                 "username": this.state.username,
                 "password": this.state.password,
-                "ttl": 3600 
+                "ttl": 3600
             }, 
             {
                 'headers': {

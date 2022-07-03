@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import PostFeed from "./PostFeed";
 import axios from 'axios';
+import AddPost from './AddPost';
 
 import './HomePage.css'
 
@@ -63,6 +64,7 @@ class HomePage extends Component {
     render() {
         return(
             <div className="PostContainer">
+                {this.props.user && <AddPost />}
                 <PostFeed postData={this.state.postList} newPosts={this.getNextPosts}/>
             </div>
         )

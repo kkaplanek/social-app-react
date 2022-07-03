@@ -19,8 +19,8 @@ function App() {
       <header className="App-header">
         <h1>Social App</h1>
         <Routes>
-          <Route path="/" element={<Layout user={user}/>}>
-            <Route index element={<HomePage />} />
+          <Route path="/" element={<Layout user={user} setUser={setUser}/>}>
+            <Route index element={<HomePage user={user}/>} />
             <Route path="login" element={<LoginPage setUser={setUser} user={user}/>} />
             <Route path="signup" element={<SignupPage />} />
           </Route>
@@ -31,10 +31,28 @@ function App() {
 }
 
 function Layout(props) {
+
+  const logOutUser = (event) => {
+    event.preventDefault();
+  
+    axios.post('https://akademia108.pl/api/social-app/user/logout')
+      .then((response) => {
+        console.log(response.data);
+        if (response.data.message) {
+          localStorage.removeItem('user');
+          props.setUser(null)
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        localStorage.removeItem('user');
+        props.setUser(null)
+      });
+  }
+
+
   return (
     <div>
-      {/* A "layout route" is a good place to put markup you want to
-          share across all the pages on your site, like navigation. */}
       <nav>
         <ul>
           <li>
@@ -47,7 +65,7 @@ function Layout(props) {
             <Link to="/signup" className="App-link">SignUp</Link>
           </li>}
           {props.user && <li>
-            <Link to="/" className="App-link">Log Out</Link>
+            <Link to="/" className="App-link" onClick={logOutUser}>Log Out</Link>
           </li>}
         </ul>
       </nav>
