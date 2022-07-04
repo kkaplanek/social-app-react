@@ -1,5 +1,4 @@
 import React from "react";
-// import Moment from 'moment';
 
 import './PostFeed.css';
 
@@ -20,8 +19,6 @@ function PostFeed (props) {
             </div>
         ) 
     })
-
-    // console.log(postElements);
 
     return (
         <div className="PostWrapper">

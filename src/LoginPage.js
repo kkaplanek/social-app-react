@@ -33,7 +33,6 @@ class LoginPage extends Component {
                 }
             })
         .then((response) => {
-            console.log(response.data);
             localStorage.setItem('user', JSON.stringify(response.data));
             this.props.setUser((response.data))
         })

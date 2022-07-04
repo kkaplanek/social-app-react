@@ -27,8 +27,6 @@ class HomePage extends Component {
             this.setState({
                 postList: response.data
             })
-  
-            // console.log(response.data);
 
         })
         .catch((error) => {
@@ -59,12 +57,33 @@ class HomePage extends Component {
 
       };
     
+    getNewPosts = () => {
+
+        let posts = this.state.postList;
+    
+            axios.post('https://akademia108.pl/api/social-app/post/newer-then',
+                {
+                  date: posts[0].created_at
+                }
+              )
+              .then((response) => {
+                let responseData = response.data;
+                posts = responseData.concat(posts);
+                this.setState({
+                    postList: posts
+                })
+              })
+              .catch((error) => {
+                console.error(error);
+              });
+    
+    };
     
 
     render() {
         return(
             <div className="PostContainer">
-                {this.props.user && <AddPost />}
+                {this.props.user && <AddPost newPosts={this.getNewPosts}/>}
                 <PostFeed postData={this.state.postList} newPosts={this.getNextPosts}/>
             </div>
         )

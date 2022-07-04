@@ -27,6 +27,7 @@ class AddPost extends Component {
             this.setState({
                 postContent: ''
             })
+            this.props.newPosts();
             console.log(this.state);
         })
         .catch((error) => {

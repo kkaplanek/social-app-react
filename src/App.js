@@ -37,7 +37,6 @@ function Layout(props) {
   
     axios.post('https://akademia108.pl/api/social-app/user/logout')
       .then((response) => {
-        console.log(response.data);
         if (response.data.message) {
           localStorage.removeItem('user');
           props.setUser(null)
