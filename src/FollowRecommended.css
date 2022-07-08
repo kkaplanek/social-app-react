@@ -1,0 +1,13 @@
+.FollowRecommendations {
+    width: 620px;
+    height: 120px;
+    background-color: #F5E1FD;
+    display: flex;
+    border: 2px dashed #B399D4;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+.FollowRecommendations .UserBox {
+    width: 33.3333%;
+}

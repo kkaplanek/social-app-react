@@ -19,6 +19,10 @@
     border-radius: 5px;
 }
 
+.SignupFormContainer form.SignupForm input:focus:invalid {
+    border: 2px solid red;
+}
+
 .SignupFormContainer form.SignupForm button.SignupButton {
     width: 70px;
     height: 35px;

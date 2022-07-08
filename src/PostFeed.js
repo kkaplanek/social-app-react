@@ -6,6 +6,7 @@ function PostFeed (props) {
 
     let postFeed = props.postData;
 
+
     let postElements = postFeed.map((postObj) => {
         return (
             <div className="Post" key={postObj.id}>
@@ -15,7 +16,7 @@ function PostFeed (props) {
                     <span className="CreatedAt">{postObj.created_at.split('').slice(0, 10)}</span>
                 </div>
                 <div className="PostContent">{postObj.content}</div>
-                <div className="PostLikes">{'♥ ' + postObj.likes.length}</div>
+                <div className="PostLikes"><span className="LikeToggler" onClick={props.likePost}>&hearts; </span>{postObj.likes.length}</div>
             </div>
         ) 
     })
