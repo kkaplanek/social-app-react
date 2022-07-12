@@ -38,12 +38,3 @@
     text-align: end;
     font-size: 15px;
 }
-
-.Post .PostLikes .LikeToggler {
-    color: #cd8fda;
-    cursor: pointer;
-}
-
-.Post .PostLikes .LikeTogglerRed {
-    color: red;
-}

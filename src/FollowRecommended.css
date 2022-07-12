@@ -1,13 +1,41 @@
 .FollowRecommendations {
     width: 620px;
-    height: 120px;
+    height: 130px;
     background-color: #F5E1FD;
     display: flex;
     border: 2px dashed #B399D4;
     border-radius: 5px;
     margin-left: 5px;
+    font-size: 15px;
 }
 
-.FollowRecommendations .UserBox {
+.FollowRecommendations .UserWrapper {
     width: 33.3333%;
+    padding: 15px;
+}
+
+.FollowRecommendations .UserWrapper .UserPhoto img {
+    width: 25%;
+}
+
+.FollowRecommendations .UserWrapper .Username {
+    font-weight: 600;
+    text-decoration: underline;
+    padding: 3px;
+}
+
+.FollowRecommendations .UserWrapper button {
+    width: 35%;
+    height: 24%;
+    font-size: 13px;
+    background-color: #CE9DD9;
+    color: #F5E1FD;
+    border: 1px solid #CE9DD9;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 2px;
+}
+
+.FollowRecommendations .UserWrapper button:hover {
+    background-color: #cb8ed8;
 }

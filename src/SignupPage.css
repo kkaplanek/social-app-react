@@ -33,3 +33,7 @@
     border-radius: 10px;
     margin-top: 20px;
 }
+
+.SignupFormContainer form.SignupForm button.SignupButton:hover {
+    background-color: #cb8ed8;
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import Post from "./Post";
 
 import './PostFeed.css';
 
@@ -8,17 +9,7 @@ function PostFeed (props) {
 
 
     let postElements = postFeed.map((postObj) => {
-        return (
-            <div className="Post" key={postObj.id}>
-                <aside className="UserAvatar"><img src={postObj.user.avatar_url} alt="" /></aside>
-                <div className="PostData">
-                    <span className="UserID">{postObj.user.username}</span>
-                    <span className="CreatedAt">{postObj.created_at.split('').slice(0, 10)}</span>
-                </div>
-                <div className="PostContent">{postObj.content}</div>
-                <div className="PostLikes"><span className="LikeToggler" onClick={props.likePost}>&hearts; </span>{postObj.likes.length}</div>
-            </div>
-        ) 
+        return <Post postObj={postObj} user={props.user} key={postObj.id} userID={postObj.user.username} latestPosts={props.latestPosts}/>
     })
 
     return (

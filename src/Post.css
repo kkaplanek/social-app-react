@@ -1,0 +1,51 @@
+.PostButtons {
+    text-align: end;
+}
+
+.Post .PostButtons .LikeToggler {
+    width: 10%;
+    height: 22px;
+    font-size: 13px;
+    background-color: #CE9DD9;
+    color: #F5E1FD;
+    border: 1px solid #CE9DD9;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.Post .PostButtons .LikeToggler:hover {
+    background-color: #cb8ed8;
+}
+
+.Post .PostDelete {
+    width: 16%;
+    height: 22px;
+    font-size: 13px;
+    background-color: #CE9DD9;
+    color: #F5E1FD;
+    border: 1px solid #CE9DD9;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.Post .PostDelete:hover {
+    background-color: #cb8ed8;
+}
+
+.Post .UnfollowButton {
+    width: 12%;
+    height: 22px;
+    font-size: 13px;
+    background-color: #CE9DD9;
+    color: #F5E1FD;
+    border: 1px solid #CE9DD9;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.Post .UnfollowButton:hover {
+    background-color: #cb8ed8;
+}
