@@ -55,8 +55,8 @@ class Post extends Component {
     axios.post('https://akademia108.pl/api/social-app/post/delete', {
       post_id: id,
     })
-    .then ((res) => {
-      console.log(res);
+    .then (() => {
+      this.props.latestPosts();
     })
     .catch((error) => {
       console.error(error);
@@ -69,6 +69,7 @@ class Post extends Component {
     { leader_id: id })
     .then(() => {
       this.props.latestPosts();
+
     })
     .catch((error) => {
       console.error(error);
@@ -90,8 +91,8 @@ class Post extends Component {
         </div>
         <div className="PostContent">{this.props.postObj.content}</div>
         <div className="PostButtons">
-          {this.props.user.username === this.props.userID && <button className="PostDelete" onClick={this.deletePost}>Delete post</button>}
-          {this.props.user.username !== this.props.userID && <button className="UnfollowButton" onClick={this.unfollowUser}>Unfollow</button>}
+          {this.props.user.username === this.props.userID && <button className="PostDelete" onClick={() => this.deletePost(this.props.postObj.id)}>Delete post</button>}
+          {this.props.user.username !== this.props.userID && <button className="UnfollowButton" onClick={() => this.unfollowUser(this.props.postObj.user.id)}>Unfollow</button>}
           {this.state.isLiked ? <button className="LikeToggler" onClick={()=>this.dislikePost(this.props.postObj.id)}>Dislike</button>:<button className="LikeToggler" onClick={()=>this.likePost(this.props.postObj.id)}>Like</button>}
           {this.state.likeCount}
         </div>

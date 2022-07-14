@@ -71,17 +71,22 @@ class HomePage extends Component {
       });
   };
 
+  child = () => {
+
+  };
+
   render() {
     return (
       <div className="PostContainer">
         {this.props.user && <AddPost newPosts={this.getNewPosts} />}
-        {this.props.user && <FollowRecommended followRecs={this.state.followRecs} latestPosts={this.getPostData}/>}
+        {this.props.user && <FollowRecommended latestPosts={this.getPostData}/>}
         <PostFeed
           postData={this.state.postList}
           newPosts={this.getNextPosts}
           likePost={this.likePost}
           user={this.props.user}
           latestPosts={this.getPostData}
+          userFollowRefresh={this.child}
         />
       </div>
     );
