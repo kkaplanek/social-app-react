@@ -71,10 +71,6 @@ class HomePage extends Component {
       });
   };
 
-  child = () => {
-
-  };
-
   render() {
     return (
       <div className="PostContainer">
@@ -86,7 +82,6 @@ class HomePage extends Component {
           likePost={this.likePost}
           user={this.props.user}
           latestPosts={this.getPostData}
-          userFollowRefresh={this.child}
         />
       </div>
     );
