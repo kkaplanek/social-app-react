@@ -16,17 +16,14 @@ function App() {
 
 
   return (
-    <div>
-      <header className="App-header">
-        <h1>Social App</h1>
-        <Routes>
+    <div className="App-header">
+      <Routes>
           <Route path="/" element={<Layout user={user} setUser={setUser}/>}>
             <Route index element={<HomePage user={user}/>} />
             <Route path="login" element={<LoginPage setUser={setUser} user={user}/>} />
             <Route path="signup" element={<SignupPage />} />
           </Route>
-        </Routes>
-      </header>
+      </Routes>
     </div>
   );
 }

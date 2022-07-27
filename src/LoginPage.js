@@ -24,13 +24,6 @@ class LoginPage extends Component {
                 "username": this.state.username,
                 "password": this.state.password,
                 "ttl": 3600
-            }, 
-            {
-                'headers': {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                    'Authorization': 'Bearer ' + <jwtToken />
-                }
             })
         .then((response) => {
             localStorage.setItem('user', JSON.stringify(response.data));

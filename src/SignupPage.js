@@ -14,7 +14,11 @@ class SignupPage extends Component {
             password: '',
             repeatPassword: '',
             signUpMessage: '',
-            signedUp: ''
+            signedUp: '',
+            usernameError: '',
+            emailError: '',
+            passwordError: '',
+            repeatPassError: '' 
         }
     }
 
@@ -27,8 +31,63 @@ class SignupPage extends Component {
         })
       };
 
+    validate = () => {
+
+        let isValid = true;
+
+        /* Username validation */
+        if(this.state.username.trim().length < 4) {
+            isValid = false;
+            this.setState({usernameError: 'The username should be at least 4 characters long!'})
+        } else if(!/^[^\s]*$/.test(this.state.username.trim())) {
+            isValid = false;
+            this.setState({usernameError: `The username shouldn't have empty characters!`})
+        } else {
+            this.setState({usernameError: ``})
+        }
+
+        /* E-mail validation */
+        if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(this.state.email.trim())) {
+            isValid = false;
+            this.setState({emailError: 'Input a valid email address.'})
+        } else if (!/^[^\s]*$/.test(this.state.email.trim())) {
+            isValid = false;
+            this.setState({emailError: `The email address shouldn't have empty characters!`})
+        } else {
+            this.setState({emailError: ``})
+        }
+
+        /* Password validation */
+        if(this.state.password.trim().length < 6) {
+            isValid = false;
+            this.setState({passwordError: 'The password should be at least 6 characters long!'}) 
+        } else if (!/[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]+/.test(this.state.password.trim())) {
+            isValid = false;
+            this.setState({passwordError: 'Password must contain one of these characters: ! # @ $ %'})
+        } else if (!/^[^\s]*$/.test(this.state.password.trim())) {
+            isValid = false;
+            this.setState({passwordError: `The password shouldn't have empty characters!`})
+        } else if (!/[0-9]/.test(this.state.password.trim())) {
+            isValid = false;
+            this.setState({passwordError: `The password should contain at least one number!`})
+        } else {
+            this.setState({passwordError: ''})
+        }
+
+        /* Repeat password validation */
+        if(this.state.password !== this.state.repeatPassword) {
+            isValid = false;
+            this.setState({repeatPassError: 'Input the same password.'})
+        }
+
+        return isValid
+
+    }
+
     signUpUser = (event) => {
         event.preventDefault();
+
+        if(!this.validate()) return
 
         axios.post('https://akademia108.pl/api/social-app/user/signup',
         {
@@ -53,37 +112,38 @@ class SignupPage extends Component {
                      type="text" 
                      className="UsernameInput" 
                      name="username" 
-                     required 
-                     pattern="[^' ']+" 
-                     minLength={4} 
                      placeholder="Username"
-                     onChange={this.handleInputChange} /><br />
+                     required
+                     onChange={this.handleInputChange} />
+                     {this.state.usernameError && <p>{this.state.usernameError}</p>}
+                     <br />
                     <input 
-                     type="email" 
+                     type="text" 
                      className="UserEmail" 
                      name="email" 
-                     required 
-                     pattern="[^' ']+" 
                      placeholder="Email"
-                     onChange={this.handleInputChange} /><br />
+                     required
+                     onChange={this.handleInputChange} />
+                     {this.state.emailError && <p>{this.state.emailError}</p>}
+                     <br />
                     <input 
                      type="password" 
                      className="PasswordInput" 
-                     name="password" 
-                     required 
-                     minLength={6} 
-                     pattern="(?=.*\d)(?=.*[a-z])(?=.*?[0-9])(?=.*?[~`!@#$%\^*()\-_=+[\]{};:\x27.,\x22\\|/?><]).{4,}" 
+                     name="password"
                      placeholder="Password"
-                     onChange={this.handleInputChange} /><br />
+                     required
+                     onChange={this.handleInputChange} />
+                     {this.state.passwordError && <p>{this.state.passwordError}</p>}
+                     <br />
                     <input 
                      type="password" 
                      className="RepeatPasswordInput" 
                      name="repeatPassword" 
-                     required 
-                     minLength={6} 
-                     pattern="(?=.*\d)(?=.*[a-z])(?=.*?[0-9])(?=.*?[~`!@#$%\^*()\-_=+[\]{};:\x27.,\x22\\|/?><]).{4,}" 
                      placeholder="Repeat password"
-                     onChange={this.handleInputChange} /><br />
+                     required
+                     onChange={this.handleInputChange} />
+                     {this.state.repeatPassError && <p>{this.state.repeatPassError}</p>}
+                     <br />
                     {!this.state.signedUp && <button type="submit" className="SignupButton">Sign Up</button>}
                     {this.state.signedUp && 
                     <div className="LoginButtonContainer">

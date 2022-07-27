@@ -1,19 +1,19 @@
 .App {
-  text-align: center;
+  overflow-y: scroll;
 }
 
 .App-header {
-  position: fixed;
+  position: relative;
   background-color: #B399D4;
   min-width: 100%;
-  /* max-height: 135px; */
   max-height: 20vh;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: #F5E1FD;
+  text-align: center;
 }
 
 .App-link {
@@ -21,14 +21,8 @@
   text-decoration: none;
 }
 
-.App-header h1 {
-  font-size: 30px;
-  padding: 25px;
-}
-
 .App-header ul {
   list-style: none;
-  padding: 0 0 0 30px;
 }
 
 .App-header ul li {

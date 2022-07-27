@@ -1,11 +1,8 @@
 .PostContainer {
     position: relative;
-    margin-top: 160px;
     color: #cd8fda;
     font-size: 15px;
-    height: 550px;
-    text-align: center;
-    overflow-y: scroll;
+    margin-top: 160px;
 }
 
 .LoadMore {
@@ -17,4 +14,5 @@
     border: 1px solid #CE9DD9;
     border-radius: 10px;
     cursor: pointer;
+    margin: 0 auto;
 }
