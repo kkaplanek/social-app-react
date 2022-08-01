@@ -1,5 +1,5 @@
-import axios from "axios";
 import React, { Component } from "react";
+import axios from "axios";
 
 import './AddPost.css';
 
@@ -10,38 +10,35 @@ class AddPost extends Component {
 
         this.state = {
             postContent: ''
-        }
+        };
 
     }
 
-   addNewPost = (event) => {
+    addNewPost = (event) => {
         event.preventDefault();
 
-
-        axios.post('https://akademia108.pl/api/social-app/post/add',
-        {
+        axios
+          .post('https://akademia108.pl/api/social-app/post/add',
+           {
             "content": this.state.postContent
-        })
-        .then((response) => {
-            console.log(response.data);
+           })
+          .then(() => {
             this.setState({
                 postContent: ''
             })
             this.props.newPosts();
-            console.log(this.state);
-        })
-        .catch((error) => {
+           })
+          .catch((error) => {
             console.error(error);
-        });
+           });
     }
 
     handleChange = (event) => {
         this.setState({postContent: event.target.value});
     }
 
-    
-
     render() {
+
         return(
             <div className="AddPost">
                 <form className="PostArea" onSubmit={this.addNewPost}>

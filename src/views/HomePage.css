@@ -1,3 +1,22 @@
+.PostContainer {
+    position: relative;
+    color: #cd8fda;
+    font-size: 15px;
+    margin-top: 160px;
+}
+
+.LoadMore {
+    width: 100px;
+    height: 50px;
+    font-size: 15px;
+    background-color: #CE9DD9;
+    color: #F5E1FD;
+    border: 1px solid #CE9DD9;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
 .Post {
     width: 600px;
     background-color: #F5E1FD;

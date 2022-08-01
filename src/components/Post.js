@@ -1,6 +1,7 @@
-import { Component } from "react";
-import './Post.css';
+import React, { Component } from "react";
 import axios from "axios";
+
+import './Post.css';
 
 class Post extends Component {
 
@@ -10,69 +11,67 @@ class Post extends Component {
     this.state = {
         isLiked: false,
         likeCount: this.props.postObj.likes.length
-    }
+    };
   }
-
-
-//   componentDidMount() {
-//     const isLikedByUser = this.props.postObj.likes.filter(like=>like.username === this.props.user.username)
-//     this.setState({isLiked: !!isLikedByUser.length})
-//   }
 
   likePost = (id) => {
     
-    axios.post("https://akademia108.pl/api/social-app/post/like", {
-        post_id: id,
-      })
-      .then((res) => {
-        if(res.data.liked) {
-            this.setState({likeCount: this.state.likeCount + 1, isLiked: true})
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    axios
+      .post("https://akademia108.pl/api/social-app/post/like", {
+          post_id: id,
+        })
+        .then((res) => {
+          if(res.data.liked) {
+              this.setState({likeCount: this.state.likeCount + 1, isLiked: true})
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
   };
 
   dislikePost = (id) => {
 
-    axios.post('https://akademia108.pl/api/social-app/post/dislike', {
-      post_id: id,
-    })
-    .then((res) => {
-      if(!res.data.liked) {
-        this.setState({likeCount: this.state.likeCount - 1, isLiked: false})
-    }
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+    axios
+      .post('https://akademia108.pl/api/social-app/post/dislike', {
+        post_id: id,
+      })
+      .then((res) => {
+        if(!res.data.liked) {
+          this.setState({likeCount: this.state.likeCount - 1, isLiked: false})
+      }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
   deletePost = (id) => {
 
-    axios.post('https://akademia108.pl/api/social-app/post/delete', {
-      post_id: id,
-    })
-    .then (() => {
-      this.props.latestPosts();
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+    axios
+      .post('https://akademia108.pl/api/social-app/post/delete', {
+        post_id: id,
+      })
+      .then (() => {
+        this.props.latestPosts();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
   unfollowUser = (id) => {
 
-    axios.post('https://akademia108.pl/api/social-app/follows/disfollow', 
-    { leader_id: id })
-    .then(() => {
-      this.props.latestPosts();
+    axios
+      .post('https://akademia108.pl/api/social-app/follows/disfollow', 
+      { leader_id: id })
+      .then(() => {
+        this.props.latestPosts();
 
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
   render() {

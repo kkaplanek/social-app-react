@@ -4,16 +4,15 @@ import axios from "axios";
 
 import './App.css';
 
-import HomePage from './HomePage.js';
-import LoginPage from "./LoginPage";
-import SignupPage from "./SignupPage";
+import HomePage from './views/HomePage.js';
+import LoginPage from "./views/LoginPage";
+import SignupPage from "./views/SignupPage";
 
 function App() {
 
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
 
   axios.defaults.headers.common['Authorization'] = "Bearer " + (user ? user.jwt_token : "");
-
 
   return (
     <div className="App-header">
@@ -46,7 +45,6 @@ function Layout(props) {
         props.setUser(null)
       });
   }
-
 
   return (
     <div>

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import './LoginPage.css';
 import axios from "axios";
 import { Navigate } from "react-router-dom";
+
+import './LoginPage.css';
 
 class LoginPage extends Component {
 
@@ -11,30 +12,30 @@ class LoginPage extends Component {
         this.state = {
             username: '',
             password: ''
-        }
+        };
 
     }
 
     loginUser = (event) => {
         event.preventDefault();
 
-        axios.post(
+        axios
+          .post(
             'https://akademia108.pl/api/social-app/user/login', 
             {
                 "username": this.state.username,
                 "password": this.state.password,
                 "ttl": 3600
             })
-        .then((response) => {
+          .then((response) => {
             localStorage.setItem('user', JSON.stringify(response.data));
             this.props.setUser((response.data))
-        })
-        .catch((error) => {
+           })
+          .catch((error) => {
             console.error(error);
-        });
+           });
 
     }
-
 
     render() {
         return(

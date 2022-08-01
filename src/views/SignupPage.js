@@ -1,7 +1,8 @@
-import axios from "axios";
 import React, { Component } from "react";
-import './SignupPage.css';
+import axios from "axios";
 import { Link } from "react-router-dom";
+
+import './SignupPage.css';
 
 class SignupPage extends Component {
 
@@ -19,10 +20,10 @@ class SignupPage extends Component {
             emailError: '',
             passwordError: '',
             repeatPassError: '' 
-        }
+        };
     }
 
-   handleInputChange = (e) => {
+    handleInputChange = (e) => {
         const target = e.target;
         const name = target.name;
     
@@ -105,6 +106,7 @@ class SignupPage extends Component {
     }
 
     render() {
+        
         return(
             <div className="SignupFormContainer">
                 <form className="SignupForm" onSubmit={this.signUpUser}>

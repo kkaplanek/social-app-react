@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import PostFeed from "./PostFeed";
 import axios from "axios";
-import AddPost from "./AddPost";
-import FollowRecommended from "./FollowRecommended";
+import AddPost from "../components/AddPost";
+import FollowRecommended from "../components/FollowRecommended";
+import Post from "../components/Post";
 
 import "./HomePage.css";
 
@@ -45,7 +45,6 @@ class HomePage extends Component {
         this.setState({
           postList: posts,
         });
-        console.log(posts);
       })
       .catch((error) => {
         console.error(error);
@@ -72,17 +71,17 @@ class HomePage extends Component {
   };
 
   render() {
+    
     return (
       <div className="PostContainer">
         {this.props.user && <AddPost newPosts={this.getNewPosts} />}
         {this.props.user && <FollowRecommended latestPosts={this.getPostData}/>}
-        <PostFeed
-          postData={this.state.postList}
-          newPosts={this.getNextPosts}
-          likePost={this.likePost}
-          user={this.props.user}
-          latestPosts={this.getPostData}
-        />
+        <div className="PostWrapper">
+            {this.state.postList.map((postObj) => {
+            return <Post postObj={postObj} user={this.props.user} key={postObj.id} userID={postObj.user.username} latestPosts={this.getPostData}/>
+            })}
+            <button className="LoadMore" onClick={this.getNextPosts}>Load more</button>
+        </div>
       </div>
     );
   }
